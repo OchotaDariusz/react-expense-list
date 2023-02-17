@@ -1,0 +1,70 @@
+@use "./../../sass" as *;
+
+.expense-item {
+  @include transitions;
+  @include flexbox($justify: space-between);
+
+  box-shadow: $shadow-sm;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: $expense-item-bg;
+
+  &:hover {
+    background-color: $expense-item-bg-hover;
+    color: $font-color-hover !important;
+    box-shadow: $shadow-md-light;
+  }
+
+  h2 {
+    @include text-shadow-with-hover;
+    @include transitions;
+    @include flexbox($justify: inherit, $flex: auto);
+
+    font-size: 1rem;
+    margin: 0 1rem;
+    color: $font-color;
+
+    &:hover {
+      color: $font-color-hover;
+    }
+  }
+
+  &__description {
+    @include flexbox(column, flex-end, flex-start, auto);
+
+    gap: 1rem;
+    flex-flow: column-reverse;
+
+    @media (min-width: $layout-breakpoint-sm) {
+      @include flexbox($justify: flex-start, $flex: auto);
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  &__price {
+    @include box-shadow-with-hover;
+    @include text-shadow-with-hover;
+    @include transitions;
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: $font-color;
+    background-color: rgba(31, 31, 31, 0.7);
+    border: 1px solid $border-color;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $font-color-hover;
+      border: 1px solid $border-color-hover;
+      background-color: #2a2a2a;
+    }
+
+    @media (min-width: $layout-breakpoint-sm) {
+      font-size: 1.25rem;
+      padding: 0.5rem 1.5rem;
+    }
+  }
+}

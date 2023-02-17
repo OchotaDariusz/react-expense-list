@@ -1,0 +1,10 @@
+@use "./../../sass" as *;
+
+.expenses {
+  padding: 1rem;
+  background: $main-bg;
+  margin: 2rem auto;
+  width: 70rem;
+  max-width: 95%;
+  box-shadow: $shadow-lg;
+}

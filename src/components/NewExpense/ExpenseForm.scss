@@ -1,0 +1,32 @@
+@use "./../../sass" as *;
+
+.new-expense__controls {
+  @include flexbox($flex-wrap: wrap);
+
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+
+  label {
+    @include text-shadow-with-hover;
+    @include transitions;
+
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: $font-color;
+
+    &:hover {
+      color: $font-color-hover;
+    }
+  }
+
+  input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+}

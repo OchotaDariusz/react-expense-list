@@ -1,0 +1,15 @@
+@use "./../../sass" as *;
+
+.expenses-list {
+  list-style: none;
+  padding: 0;
+
+  &__empty {
+    @include font-white-with-hover;
+    @include transitions;
+
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}

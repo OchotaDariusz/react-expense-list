@@ -1,0 +1,45 @@
+@use "./variables" as *;
+
+@mixin box-shadow-with-hover {
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin text-shadow-with-hover {
+  text-shadow: $shadow-sm;
+
+  &:hover {
+    text-shadow: $shadow-lg;
+  }
+}
+
+@mixin transitions {
+  transition: background-color 0.2s, color 0.3s, border-color 0.4s,
+    box-shadow 0.4s, text-shadow 0.4s;
+}
+
+@mixin flexbox(
+  $direction: row,
+  $align: center,
+  $justify: center,
+  $flex: initial,
+  $flex-wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex: $flex;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin font-white-with-hover {
+  color: $font-color;
+
+  &:hover {
+    color: $font-color-hover;
+  }
+}

@@ -1,0 +1,27 @@
+$font-color: #dfdfdf;
+$font-color-hover: #fff;
+
+$border-color: #9b9b9b;
+$border-color-hover: #fff;
+
+$expense-item-bg: #4b4b4b;
+$expense-item-bg-hover: #6b6b6b;
+
+$layout-breakpoint-sm: 580px;
+
+$shadow-sm: 0 1px 6px rgba(0, 0, 0, 0.35);
+$shadow-lg: 0 1px 12px rgba(0, 0, 0, 0.5);
+
+$shadow-md-light: 0 2px 8px rgba(255, 255, 255, 0.35);
+
+$main-bg: linear-gradient(
+  135deg,
+  rgba(167, 32, 32, 0.7) 35%,
+  rgba(42, 42, 42, 0.9) 100%
+);
+
+$box-bg: linear-gradient(
+  135deg,
+  rgba(167, 32, 32, 0.7) 35%,
+  rgba(42, 42, 42, 0.9) 100%
+);

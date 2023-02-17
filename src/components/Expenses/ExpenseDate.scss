@@ -1,0 +1,37 @@
+@use "./../../sass" as *;
+
+.expense-date {
+  @include box-shadow-with-hover;
+  @include text-shadow-with-hover;
+  @include transitions;
+  @include flexbox(column);
+
+  width: 5.5rem;
+  height: 5.5rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: $border-color;
+  background-color: rgba(31, 31, 61, 0.7);
+  color: $font-color;
+  border-radius: 50vh;
+
+  &:hover {
+    color: $font-color-hover;
+    border-color: $border-color-hover;
+    background-color: #2a2a48;
+  }
+
+  &__month {
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+
+  &__year {
+    font-size: 0.75rem;
+  }
+
+  &__day {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
