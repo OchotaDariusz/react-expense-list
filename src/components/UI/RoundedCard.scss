@@ -1,3 +1,5 @@
+@use "./../../sass" as *;
+
 .rounded-card {
-  border-radius: 50vh;
+  @include rounded-corners;
 }

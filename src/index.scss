@@ -1,3 +1,4 @@
+@use "./sass" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 * {
@@ -10,11 +11,7 @@ html {
 
 body {
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(157, 107, 107, 1) 35%,
-    rgba(75, 75, 105, 1) 100%
-  );
+  background: $page-bg;
   min-height: 100vh;
   overflow-x: hidden;
 }

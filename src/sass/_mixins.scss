@@ -1,5 +1,16 @@
 @use "./variables" as *;
 
+@mixin grey-box-with-hover {
+  box-shadow: $shadow-sm;
+  background-color: $expense-item-bg;
+
+  &:hover {
+    background-color: $expense-item-bg-hover;
+    color: $font-color-hover !important;
+    box-shadow: $shadow-md-light;
+  }
+}
+
 @mixin box-shadow-with-hover {
   box-shadow: $shadow-sm;
 
@@ -42,4 +53,12 @@
   &:hover {
     color: $font-color-hover;
   }
+}
+
+@mixin rounded-corners {
+  border-radius: 50vh;
+}
+
+@mixin rounded-card-corners {
+  border-radius: 12px;
 }

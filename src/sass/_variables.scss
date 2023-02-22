@@ -14,6 +14,12 @@ $shadow-lg: 0 1px 12px rgba(0, 0, 0, 0.5);
 
 $shadow-md-light: 0 2px 8px rgba(255, 255, 255, 0.35);
 
+$page-bg: linear-gradient(
+  135deg,
+  rgba(157, 107, 107, 1) 35%,
+  rgba(75, 75, 105, 1) 100%
+);
+
 $main-bg: linear-gradient(
   135deg,
   rgba(167, 32, 32, 0.7) 35%,
@@ -24,4 +30,28 @@ $box-bg: linear-gradient(
   135deg,
   rgba(167, 32, 32, 0.7) 35%,
   rgba(42, 42, 42, 0.9) 100%
+);
+
+$chart-bg: linear-gradient(
+  135deg,
+  darken(rgba(157, 107, 127, 1), 10%) 35%,
+  darken(rgba(75, 75, 135, 1), 10%) 100%
+);
+
+$chart-bg-hover: linear-gradient(
+  135deg,
+  darken(rgba(157, 107, 127, 1), 0%) 35%,
+  darken(rgba(75, 75, 135, 1), 0%) 100%
+);
+
+$chart-bg-fill: linear-gradient(
+  135deg,
+  lighten(rgba(157, 107, 157, 1), 0%) 35%,
+  lighten(rgba(75, 75, 145, 1), 0%) 100%
+);
+
+$chart-bg-fill-hover: linear-gradient(
+  135deg,
+  lighten(rgba(157, 107, 157, 1), 10%) 35%,
+  lighten(rgba(75, 75, 145, 1), 10%) 100%
 );

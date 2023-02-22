@@ -1,0 +1,48 @@
+@use "./../../sass" as *;
+
+.chart-bar {
+  @include transitions;
+  @include rounded-corners;
+  @include box-shadow-with-hover;
+  @include flexbox($flex-wrap: wrap);
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__inner {
+    @include flexbox($direction: column, $justify: flex-end);
+
+    height: 100%;
+    width: 100%;
+    border: 1px solid #313131;
+    border-radius: 50vh;
+    background: $chart-bg;
+    overflow: hidden;
+
+    &:hover {
+      background: $chart-bg-hover;
+    }
+  }
+
+  &__fill {
+    background: $chart-bg-fill;
+    width: 100%;
+    transition: height 0.3s ease-out;
+
+    &:hover {
+      background: $chart-bg-fill-hover;
+    }
+  }
+
+  &__label {
+    @include font-white-with-hover;
+    @include text-shadow-with-hover;
+    @include transitions;
+
+    font-weight: bold;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+}

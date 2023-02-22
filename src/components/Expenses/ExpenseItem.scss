@@ -3,17 +3,10 @@
 .expense-item {
   @include transitions;
   @include flexbox($justify: space-between);
+  @include grey-box-with-hover;
 
-  box-shadow: $shadow-sm;
   padding: 0.5rem;
   margin: 1rem 0;
-  background-color: $expense-item-bg;
-
-  &:hover {
-    background-color: $expense-item-bg-hover;
-    color: $font-color-hover !important;
-    box-shadow: $shadow-md-light;
-  }
 
   h2 {
     @include text-shadow-with-hover;
