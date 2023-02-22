@@ -1,1 +1,1 @@
-[DEMO](https://ochotadariusz.github.com/react-expense-list)
+[DEMO APP](https://ochotadariusz.github.io/react-expense-list)
