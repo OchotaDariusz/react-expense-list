@@ -1,0 +1,10 @@
+@use "./../../sass" as *;
+
+.reset-expenses {
+  @include card-fill;
+  @include flexbox;
+
+  button {
+    @include button(1rem);
+  }
+}
