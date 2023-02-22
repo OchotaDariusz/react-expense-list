@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 import "./Expenses.scss";
 
 const sortByDate = (a, b) => {
@@ -38,6 +39,7 @@ const Expenses = ({ expenses, filterRef }) => {
         onSelectYear={filterExpensesByYear}
         filterRef={filterRef}
       />
+      <ExpensesChart expenses={filteredExpenses} />
       <ExpensesList items={filteredExpenses.sort(sortByDate)} />
     </Card>
   );
