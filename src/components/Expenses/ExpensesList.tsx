@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
-import Card from "./../UI/Card";
+import React, { useEffect, useState } from "react";
+import { Expense } from "../../general/types";
+import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpensesList.scss";
 
-const ExpensesList = ({ items }) => {
+type Props = {
+  items: Expense[];
+};
+
+const ExpensesList = ({ items }: Props) => {
   const [isListEmpty, setIsListEmpty] = useState(true);
 
   useEffect(() => {

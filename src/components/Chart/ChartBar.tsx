@@ -1,6 +1,13 @@
+import React from "react";
 import "./ChartBar.scss";
 
-const ChartBar = ({ value, maxValue, label }) => {
+type Props = {
+  value: number;
+  maxValue: number;
+  label: string;
+};
+
+const ChartBar = ({ value, maxValue, label }: Props) => {
   let barFillHeight = "0%";
   if (maxValue > 0) {
     barFillHeight = Math.round((value / maxValue) * 100) + "%";

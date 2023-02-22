@@ -1,22 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./ExpenseForm.scss";
+import { Expense } from "../../general/types";
 
-const ExpenseForm = ({ onSaveExpenseData, hideExpenseForm }) => {
-  const [newExpenseDetails, setNewExpenseDetails] = useState({
+type Props = {
+  onSaveExpenseData: (expenseDetails: Expense) => void;
+  hideExpenseForm: () => void;
+};
+
+const ExpenseForm = ({ onSaveExpenseData, hideExpenseForm }: Props) => {
+  const [newExpenseDetails, setNewExpenseDetails] = useState<Expense>({
     uuid: "",
     title: "",
     amount: 0,
     date: new Date(),
   });
 
-  const newExpenseHandler = (event) => {
+  const newExpenseHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     onSaveExpenseData(newExpenseDetails);
-    event.target.reset();
+    const resetForm = event.target as HTMLFormElement;
+    resetForm.reset();
   };
 
-  const titleInputHandler = (event) => {
+  const titleInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewExpenseDetails((prevValue) => {
       return {
         ...prevValue,
@@ -26,13 +32,13 @@ const ExpenseForm = ({ onSaveExpenseData, hideExpenseForm }) => {
     });
   };
 
-  const amountInputHandler = (event) => {
+  const amountInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewExpenseDetails((prevValue) => {
       return { ...prevValue, amount: +event.target.value };
     });
   };
 
-  const dateInputHandler = (event) => {
+  const dateInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewExpenseDetails((prevValue) => {
       return { ...prevValue, date: new Date(event.target.value) };
     });

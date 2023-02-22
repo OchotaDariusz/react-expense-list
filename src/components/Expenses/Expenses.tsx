@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
-import Card from "./../UI/Card";
+import React, { useEffect, useState } from "react";
+import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 import ExpensesChart from "./ExpensesChart";
 import "./Expenses.scss";
+import { Expense } from "../../general/types";
 
-const sortByDate = (a, b) => {
+type Props = {
+  expenses: Expense[];
+  filterRef: React.LegacyRef<HTMLSelectElement>;
+};
+
+const sortByDate = (a: Expense, b: Expense) => {
   const dateA = new Date(a.date);
   const dateB = new Date(b.date);
   if (dateA < dateB) return 1;
@@ -13,14 +19,16 @@ const sortByDate = (a, b) => {
   return 0;
 };
 
-const Expenses = ({ expenses, filterRef }) => {
-  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+const Expenses = ({ expenses, filterRef }: Props) => {
+  const [filteredExpenses, setFilteredExpenses] = useState<Expense[]>(expenses);
 
   useEffect(() => {
     setFilteredExpenses(expenses);
   }, [expenses, setFilteredExpenses]);
 
-  const filterExpensesByYear = (event) => {
+  const filterExpensesByYear = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     let filterValue = event.target.value;
     if (filterValue === "any") {
       setFilteredExpenses(expenses);

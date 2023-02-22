@@ -1,7 +1,13 @@
+import React from "react";
+import { Expense } from "../../general/types";
 import Chart from "../Chart/Chart";
 
-const ExpensesChart = ({ expenses }) => {
-  const chartDataPoints = [
+type Props = {
+  expenses: Expense[];
+};
+
+const ExpensesChart = ({ expenses }: Props) => {
+  const chartDataPoints: { label: string; value: number }[] = [
     { label: "Jan", value: 0 },
     { label: "Feb", value: 0 },
     { label: "Mar", value: 0 },

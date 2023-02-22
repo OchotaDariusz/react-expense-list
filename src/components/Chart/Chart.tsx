@@ -1,8 +1,13 @@
+import React from "react";
 import ChartBar from "./ChartBar";
 import "./Chart.scss";
 import Card from "../UI/Card";
 
-const Chart = ({ dataPoints }) => {
+type Props = {
+  dataPoints: { label: string; value: number }[];
+};
+
+const Chart = ({ dataPoints }: Props) => {
   const dataPointValues = dataPoints.map((dataPoint) => dataPoint.value);
   const totalMaximum = Math.max(...dataPointValues);
 
