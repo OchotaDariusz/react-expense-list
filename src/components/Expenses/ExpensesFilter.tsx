@@ -1,12 +1,13 @@
 import React from "react";
+import { SelectEventHandler } from "../../general/types";
 import "./ExpensesFilter.scss";
 
 type Props = {
-  onSelectYear: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  filterRef: React.LegacyRef<HTMLSelectElement>;
+  onSelectYear: SelectEventHandler;
+  filterRef: React.RefObject<HTMLSelectElement>;
 };
 
-const ExpensesFilter = ({ onSelectYear, filterRef }: Props) => {
+const ExpensesFilter: React.FC<Props> = ({ onSelectYear, filterRef }) => {
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">

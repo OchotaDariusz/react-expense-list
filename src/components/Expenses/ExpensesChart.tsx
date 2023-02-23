@@ -1,13 +1,13 @@
 import React from "react";
-import { Expense } from "../../general/types";
 import Chart from "../Chart/Chart";
+import { Expense } from "../../general/types";
 
 type Props = {
   expenses: Expense[];
 };
 
-const ExpensesChart = ({ expenses }: Props) => {
-  const chartDataPoints: { label: string; value: number }[] = [
+const ExpensesChart: React.FC<Props> = ({ expenses }) => {
+  const chartDataPoints = [
     { label: "Jan", value: 0 },
     { label: "Feb", value: 0 },
     { label: "Mar", value: 0 },
@@ -26,7 +26,6 @@ const ExpensesChart = ({ expenses }: Props) => {
     const expenseMonth = new Date(expense.date).getMonth();
     chartDataPoints[expenseMonth].value += expense.amount;
   }
-
   return <Chart dataPoints={chartDataPoints} />;
 };
 

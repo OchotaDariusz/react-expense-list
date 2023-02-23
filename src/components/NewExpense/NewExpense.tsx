@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import ExpenseForm from "./ExpenseForm";
+import { SaveExpenseHanlder } from "../../general/types";
 import "./NewExpense.scss";
-import { Expense } from "../../general/types";
 
 type Props = {
-  onAddExpense: (expenseDetails: Expense) => void;
+  onAddExpense: SaveExpenseHanlder;
 };
 
-const NewExpense = ({ onAddExpense }: Props) => {
+const NewExpense: React.FC<Props> = ({ onAddExpense }) => {
   const [isExpenseFormHidden, setIsExpenseFormHidden] = useState(true);
 
   const hideExpenseForm = () => {
     setIsExpenseFormHidden(true);
   };
 
-  const onSaveExpenseDataHandler = (enteredExpenseData: Expense) => {
+  const onSaveExpenseDataHandler: SaveExpenseHanlder = (enteredExpenseData) => {
     hideExpenseForm();
     onAddExpense(enteredExpenseData);
   };

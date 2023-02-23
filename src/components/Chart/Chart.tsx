@@ -1,13 +1,13 @@
 import React from "react";
 import ChartBar from "./ChartBar";
-import "./Chart.scss";
 import Card from "../UI/Card";
+import "./Chart.scss";
 
 type Props = {
   dataPoints: { label: string; value: number }[];
 };
 
-const Chart = ({ dataPoints }: Props) => {
+const Chart: React.FC<Props> = ({ dataPoints }) => {
   const dataPointValues = dataPoints.map((dataPoint) => dataPoint.value);
   const totalMaximum = Math.max(...dataPointValues);
 

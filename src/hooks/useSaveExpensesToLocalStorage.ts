@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Expense } from "../general/types";
+import { ExpensesListHandler } from "../general/types";
 
 /**
  * Use Save Expenses To Local Storage
@@ -8,7 +8,7 @@ import { Expense } from "../general/types";
  * every time they change.
  * @param expenses list of expenses
  */
-const useSaveExpensesToLocalStorage = (expenses: Expense[]) => {
+const useSaveExpensesToLocalStorage: ExpensesListHandler = (expenses) => {
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);

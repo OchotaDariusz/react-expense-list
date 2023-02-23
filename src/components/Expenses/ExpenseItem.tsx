@@ -5,11 +5,11 @@ import "./ExpenseItem.scss";
 
 type Props = {
   title: string;
-  date: string | Date;
+  date: Date;
   amount: number;
 };
 
-const ExpenseItem = ({ title, date, amount }: Props) => {
+const ExpenseItem: React.FC<Props> = ({ title, date, amount }) => {
   return (
     <li>
       <Card className="expense-item">

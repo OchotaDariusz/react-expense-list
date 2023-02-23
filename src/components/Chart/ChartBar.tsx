@@ -7,7 +7,7 @@ type Props = {
   label: string;
 };
 
-const ChartBar = ({ value, maxValue, label }: Props) => {
+const ChartBar: React.FC<Props> = ({ value, maxValue, label }) => {
   let barFillHeight = "0%";
   if (maxValue > 0) {
     barFillHeight = Math.round((value / maxValue) * 100) + "%";

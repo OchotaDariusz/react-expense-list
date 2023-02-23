@@ -8,7 +8,7 @@ type Props = {
   items: Expense[];
 };
 
-const ExpensesList = ({ items }: Props) => {
+const ExpensesList: React.FC<Props> = ({ items }) => {
   const [isListEmpty, setIsListEmpty] = useState(true);
 
   useEffect(() => {

@@ -1,44 +1,50 @@
 import React, { useState } from "react";
 import "./ExpenseForm.scss";
-import { Expense } from "../../general/types";
+import {
+  Expense,
+  FormEventHandler,
+  InputEventHandler,
+  SaveExpenseHanlder,
+} from "../../general/types";
+import { EXPENSE_TEMPLATE } from "../../general/utils";
 
 type Props = {
-  onSaveExpenseData: (expenseDetails: Expense) => void;
+  onSaveExpenseData: SaveExpenseHanlder;
   hideExpenseForm: () => void;
 };
 
-const ExpenseForm = ({ onSaveExpenseData, hideExpenseForm }: Props) => {
-  const [newExpenseDetails, setNewExpenseDetails] = useState<Expense>({
-    uuid: "",
-    title: "",
-    amount: 0,
-    date: new Date(),
-  });
+const ExpenseForm: React.FC<Props> = ({
+  onSaveExpenseData,
+  hideExpenseForm,
+}) => {
+  const [newExpenseDetails, setNewExpenseDetails] =
+    useState<Expense>(EXPENSE_TEMPLATE);
 
-  const newExpenseHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const newExpenseHandler: FormEventHandler = (event) => {
     event.preventDefault();
-    onSaveExpenseData(newExpenseDetails);
-    const resetForm = event.target as HTMLFormElement;
-    resetForm.reset();
+    onSaveExpenseData({
+      ...newExpenseDetails,
+      uuid: crypto.randomUUID(),
+    });
+    (event.target as HTMLFormElement).reset();
   };
 
-  const titleInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const titleInputHandler: InputEventHandler = (event) => {
     setNewExpenseDetails((prevValue) => {
       return {
         ...prevValue,
-        uuid: crypto.randomUUID(),
-        title: event.target.value,
+        title: event.target.value.trim(),
       };
     });
   };
 
-  const amountInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const amountInputHandler: InputEventHandler = (event) => {
     setNewExpenseDetails((prevValue) => {
       return { ...prevValue, amount: +event.target.value };
     });
   };
 
-  const dateInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const dateInputHandler: InputEventHandler = (event) => {
     setNewExpenseDetails((prevValue) => {
       return { ...prevValue, date: new Date(event.target.value) };
     });
@@ -49,7 +55,12 @@ const ExpenseForm = ({ onSaveExpenseData, hideExpenseForm }: Props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleInputHandler} required />
+          <input
+            type="text"
+            onChange={titleInputHandler}
+            required
+            pattern=".*\S+.*"
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
