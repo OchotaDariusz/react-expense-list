@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 import ExpensesChart from "./ExpensesChart";
-import "./Expenses.scss";
-import { Expense, SelectEventHandler } from "../../general/types";
+import useWindowSize from "../../hooks/useWindowSize";
+import { Expense } from "../../general/types";
 import { sortByDate } from "../../general/utils";
+import "./Expenses.scss";
+import useFilteredExpenses from "../../hooks/useFilteredExpenses";
 
 type Props = {
   expenses: Expense[];
@@ -13,24 +15,9 @@ type Props = {
 };
 
 const Expenses: React.FC<Props> = ({ expenses, filterRef }) => {
-  const [filteredExpenses, setFilteredExpenses] = useState<Expense[]>(expenses);
-
-  useEffect(() => {
-    setFilteredExpenses(expenses);
-  }, [expenses, setFilteredExpenses]);
-
-  const filterExpensesByYear: SelectEventHandler = (event) => {
-    let filterValue = event.target.value;
-    if (filterValue === "any") {
-      setFilteredExpenses(expenses);
-      return;
-    }
-    setFilteredExpenses(() => {
-      return expenses.filter(
-        (v) => new Date(v.date).getFullYear() === +filterValue
-      );
-    });
-  };
+  const windowSize = useWindowSize();
+  const [filteredExpenses, filterExpensesByYear] =
+    useFilteredExpenses(expenses);
 
   return (
     <Card className="expenses">
@@ -38,7 +25,11 @@ const Expenses: React.FC<Props> = ({ expenses, filterRef }) => {
         onSelectYear={filterExpensesByYear}
         filterRef={filterRef}
       />
-      <ExpensesChart expenses={filteredExpenses} />
+      {windowSize > 580 ? (
+        <ExpensesChart expenses={filteredExpenses} />
+      ) : (
+        <div></div>
+      )}
       <ExpensesList items={filteredExpenses.sort(sortByDate)} />
     </Card>
   );
